@@ -52,15 +52,19 @@ let handlePeerJoined = async (MemberId) => {
 
 let handleMessageFromPeer = async (message, MemberId) => {
   message = JSON.parse(message.text);
-  console.log("Message:", message);
+  console.log("Message:", message.type);
 
   if (message.type === "offer") {
+    console.log("offer");
     if (!localStream) {
-      document.getElementById("offer-sdp").value = JSON.stringify(
-        message.offer
-      );
-      createAnswer(MemberId);
+      localStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false,
+      });
+      document.getElementById("user-1").srcObject = localStream;
     }
+    document.getElementById("offer-sdp").value = JSON.stringify(message.offer);
+    createAnswer(MemberId);
   }
   if (message.type === "answer") {
     document.getElementById("answer-sdp").value = JSON.stringify(
