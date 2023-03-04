@@ -10,7 +10,9 @@ let client;
 
 let servers = {
   iceServers: [
-
+    {
+      urls: ["stun:stun1.1.google.com:19302", "stun:stun2.1.google.com:19302"],
+    },
     {
       urls: "turn:dj-front.doct24.com:3478",
       username: "99c5e73f64647ecb366442fb",
@@ -169,22 +171,20 @@ let createAnswer = async (MemberId) => {
 };
 
 let addAnswer = async () => {
-  console.log('addAnswer')
   let answer = document.getElementById("answer-sdp").value;
   if (!answer) return alert("Retrieve answer from peer first...");
 
   answer = JSON.parse(answer);
 
   if (!peerConnection.currentRemoteDescription) {
-    console.log('conncetion')
     peerConnection.setRemoteDescription(answer);
   }
 };
 
 init();
 
-// document.getElementById("create-offer").addEventListener("click", createOffer);
-// document
-//   .getElementById("create-answer")
-//   .addEventListener("click", createAnswer);
-// document.getElementById("add-answer").addEventListener("click", addAnswer);
+document.getElementById("create-offer").addEventListener("click", createOffer);
+document
+  .getElementById("create-answer")
+  .addEventListener("click", createAnswer);
+document.getElementById("add-answer").addEventListener("click", addAnswer);
