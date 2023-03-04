@@ -8,19 +8,37 @@ let uid = String(Math.floor(Math.random() * 100));
 let token = null;
 let client;
 
+// let servers = {
+//   iceServers: [
+//     {
+//       urls: [
+//         "stun.l.google.com:19302",
+//         "stun1.l.google.com:19302",
+//         "stun2.l.google.com:19302",
+//         "stun3.l.google.com:19302",
+//         "stun4.l.google.com:19302",
+//         "stun.services.mozilla.com",
+//         "stun1.voiceeclipse.net",
+//         "stun2.voiceeclipse.net",
+//       ],
+//     },
+//     {
+//       urls: "turn:dj-front.doct24.com:3478",
+//       username: "99c5e73f64647ecb366442fb",
+//       credential: "EVtW7idU50NbcLcd",
+//     },
+//   ],
+//   iceTransportPolicy: "relay",
+//   iceCandidatePoolSize: 1,
+//   rtcpMuxPolicy: "require",
+// };
+
 let servers = {
   iceServers: [
     {
-      urls: [
-        "stun.l.google.com:19302",
-        "stun1.l.google.com:19302",
-        "stun2.l.google.com:19302",
-        "stun3.l.google.com:19302",
-        "stun4.l.google.com:19302",
-        "stun.services.mozilla.com",
-        "stun1.voiceeclipse.net",
-        "stun2.voiceeclipse.net",
-      ],
+      urls: "turn:94.228.115.167:3478",
+      username: "99c5e73f64647ecb366442fb",
+      credential: "EVtW7idU50NbcLcd",
     },
     {
       urls: "turn:dj-front.doct24.com:3478",
@@ -28,9 +46,7 @@ let servers = {
       credential: "EVtW7idU50NbcLcd",
     },
   ],
-  iceTransportPolicy: "relay",
-  iceCandidatePoolSize: 1,
-  rtcpMuxPolicy: "require",
+  iceTransportPolicy: "all",
 };
 
 // инициализация
