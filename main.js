@@ -28,6 +28,9 @@ let servers = {
       credential: "EVtW7idU50NbcLcd",
     },
   ],
+  iceTransportPolicy: "relay",
+  iceCandidatePoolSize: 1,
+  rtcpMuxPolicy: "require",
 };
 
 // инициализация
