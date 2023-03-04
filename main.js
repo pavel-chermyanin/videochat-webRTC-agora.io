@@ -11,7 +11,16 @@ let client;
 let servers = {
   iceServers: [
     {
-      urls: ["stun:stun1.1.google.com:19302", "stun:stun2.1.google.com:19302"],
+      urls: [
+        "stun.l.google.com:19302",
+        "stun1.l.google.com:19302",
+        "stun2.l.google.com:19302",
+        "stun3.l.google.com:19302",
+        "stun4.l.google.com:19302",
+        "stun.services.mozilla.com",
+        "stun1.voiceeclipse.net",
+        "stun2.voiceeclipse.net",
+      ],
     },
     {
       urls: "turn:dj-front.doct24.com:3478",
