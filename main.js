@@ -35,11 +35,7 @@ let client;
 
 let servers = {
   iceServers: [
-    {
-      urls: "turn:94.228.115.167:3478",
-      username: "99c5e73f64647ecb366442fb",
-      credential: "EVtW7idU50NbcLcd",
-    },
+    { urls: "stun:stun.l.google.com:19302" },
     {
       urls: "turn:dj-front.doct24.com:3478",
       username: "99c5e73f64647ecb366442fb",
@@ -47,6 +43,13 @@ let servers = {
     },
   ],
   iceTransportPolicy: "all",
+  bundlePolicy: "max-bundle",
+  rtcpMuxPolicy: "require",
+  sdpSemantics: "unified-plan",
+  iceCandidatePoolSize: 10,
+  iceConnectionStateTimeout: 5000,
+  iceConnectionReceivingTimeout: 5000,
+  iceBackupCandidatePairPingInterval: 1000,
 };
 
 // инициализация
