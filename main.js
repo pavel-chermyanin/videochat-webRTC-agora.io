@@ -37,7 +37,7 @@ let servers = {
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     {
-      urls: "turn:dj-front.doct24.com:3478",
+      urls: "turns:dj-front.doct24.com:3478",
       username: "99c5e73f64647ecb366442fb",
       credential: "EVtW7idU50NbcLcd",
     },
@@ -140,6 +140,14 @@ let createPeerConnection = async (sdpType, MemberId) => {
       document.getElementById(sdpType).value = JSON.stringify(
         peerConnection.localDescription
       );
+      if (event.candidate.type == "srflx") {
+        console.log("The STUN server is reachable!");
+        console.log(`   Your Public IP Address is: ${event.candidate.address}`);
+      }
+
+      if (event.candidate.type == "relay") {
+        console.log("The TURN server is reachable !");
+      }
 
       client.sendMessageToPeer(
         {
