@@ -37,11 +37,20 @@ let servers = {
   iceServers: [
     { urls: "stun:stun.l.google.com:19302" },
     {
-      urls: "turns:dj-front.doct24.com:3478",
-      username: "99c5e73f64647ecb366442fb",
-      credential: "EVtW7idU50NbcLcd",
+      urls: "turn:turn.google.com:19305?transport=udp",
+      username: "webrtc",
+      credential: "webrtc",
     },
   ],
+  // let servers = {
+  //   iceServers: [
+  //     { urls: "stun:stun.l.google.com:19302" },
+  //     {
+  //       urls: "turns:dj-front.doct24.com:3478",
+  //       username: "99c5e73f64647ecb366442fb",
+  //       credential: "EVtW7idU50NbcLcd",
+  //     },
+  //   ],
   iceTransportPolicy: "all",
   bundlePolicy: "max-bundle",
   rtcpMuxPolicy: "require",
@@ -136,6 +145,7 @@ let createPeerConnection = async (sdpType, MemberId) => {
   // серия запросов на сервер STUN
   peerConnection.onicecandidate = async (event) => {
     if (event.candidate) {
+      console.log(event.candidate.candidate);
       // когда создается новый candidate обновляем offer
       document.getElementById(sdpType).value = JSON.stringify(
         peerConnection.localDescription
