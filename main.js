@@ -8,44 +8,27 @@ let uid = String(Math.floor(Math.random() * 100));
 let token = null;
 let client;
 
-let servers = {
-  iceServers: [
-    {
-      urls: [
-        "stun:stun.l.google.com:19302",
-        "stun:stun1.l.google.com:19302",
-        "stun:stun2.l.google.com:19302",
-        "stun:stun3.l.google.com:19302",
-        "stun:stun4.l.google.com:19302",
-        "stun:stun.services.mozilla.com",
-        "stun:stun1.voiceeclipse.net",
-        "stun:stun2.voiceeclipse.net",
-      ],
-    },
 
-  ],
 
+
+  let servers = {
+    iceServers: [
+      { urls: "stun:stun.l.google.com:19302" },
+      {
+        urls: "turns:dj-front.doct24.com:3478",
+        username: "99c5e73f64647ecb366442fb",
+        credential: "EVtW7idU50NbcLcd",
+      },
+    ],
+  iceTransportPolicy: "all",
+  bundlePolicy: "max-bundle",
+  rtcpMuxPolicy: "require",
+  sdpSemantics: "unified-plan",
+  iceCandidatePoolSize: 10,
+  iceConnectionStateTimeout: 5000,
+  iceConnectionReceivingTimeout: 5000,
+  iceBackupCandidatePairPingInterval: 1000,
 };
-
-
-//   let servers = {
-//     iceServers: [
-//       { urls: "stun:stun.l.google.com:19302" },
-//       {
-//         urls: "turns:dj-front.doct24.com:3478",
-//         username: "99c5e73f64647ecb366442fb",
-//         credential: "EVtW7idU50NbcLcd",
-//       },
-//     ],
-//   iceTransportPolicy: "all",
-//   bundlePolicy: "max-bundle",
-//   rtcpMuxPolicy: "require",
-//   sdpSemantics: "unified-plan",
-//   iceCandidatePoolSize: 10,
-//   iceConnectionStateTimeout: 5000,
-//   iceConnectionReceivingTimeout: 5000,
-//   iceBackupCandidatePairPingInterval: 1000,
-// };
 
 // инициализация
 let init = async () => {
@@ -222,8 +205,8 @@ let addAnswer = async () => {
 
 init();
 
-document.getElementById("create-offer").addEventListener("click", createOffer);
-document
-  .getElementById("create-answer")
-  .addEventListener("click", createAnswer);
-document.getElementById("add-answer").addEventListener("click", addAnswer);
+// document.getElementById("create-offer").addEventListener("click", createOffer);
+// document
+//   .getElementById("create-answer")
+//   .addEventListener("click", createAnswer);
+// document.getElementById("add-answer").addEventListener("click", addAnswer);
