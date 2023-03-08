@@ -13,22 +13,35 @@ let client;
 
   let servers = {
     iceServers: [
-      { urls: "stun:stun.l.google.com:19302" },
       {
-        urls: "turns:dj-front.doct24.com:3478",
-        username: "99c5e73f64647ecb366442fb",
-        credential: "EVtW7idU50NbcLcd",
+        urls: "stun:relay.metered.ca:80",
+      },
+      {
+        urls: "turn:relay.metered.ca:80",
+        username: "7f90a72f842ec75ff052f05a",
+        credential: "Oli2NaWtjA2HVKsw",
+      },
+      {
+        urls: "turn:relay.metered.ca:443",
+        username: "7f90a72f842ec75ff052f05a",
+        credential: "Oli2NaWtjA2HVKsw",
+      },
+      {
+        urls: "turn:relay.metered.ca:443?transport=tcp",
+        username: "7f90a72f842ec75ff052f05a",
+        credential: "Oli2NaWtjA2HVKsw",
       },
     ],
-  iceTransportPolicy: "all",
-  bundlePolicy: "max-bundle",
-  rtcpMuxPolicy: "require",
-  sdpSemantics: "unified-plan",
-  iceCandidatePoolSize: 10,
-  iceConnectionStateTimeout: 5000,
-  iceConnectionReceivingTimeout: 5000,
-  iceBackupCandidatePairPingInterval: 1000,
-};
+    // iceServers: [
+    //   { urls: "stun:stun.l.google.com:19302" },
+    //   {
+    //     urls: "turn:dj-front.doct24.com:3478",
+    //     username: "99c5e73f64647ecb366442fb",
+    //     credential: "EVtW7idU50NbcLcd",
+    //   },
+    // ],
+    // iceTransportPolicy: "all",
+  };
 
 // инициализация
 let init = async () => {
