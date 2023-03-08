@@ -11,6 +11,7 @@ let client;
 
 
 
+
   let servers = {
     iceServers: [
       {
@@ -97,7 +98,7 @@ let handleMessageFromPeer = async (message, MemberId) => {
 
   if (message.type === "candidate") {
     if (peerConnection) {
-      peerConnection.addIceCandidate(message.candidate);
+      peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate));
     }
   }
 };
@@ -161,7 +162,7 @@ let createOffer = async (MemberId) => {
   // создаем offer
   let offer = await peerConnection.createOffer();
   // утсанавливаем локальное описание
-  await peerConnection.setLocalDescription(offer);
+  await peerConnection.setLocalDescription(new RTCSessionDescription(offer));
 
   // записываем SDP данные в тег textarea
   document.getElementById("offer-sdp").value = JSON.stringify(offer);
@@ -186,11 +187,11 @@ let createAnswer = async (MemberId) => {
 
   // Доавляем в peerConnection удаленное описание на основании offer
   offer = JSON.parse(offer);
-  await peerConnection.setRemoteDescription(offer);
+  await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
 
   // создаем ответ
   let answer = await peerConnection.createAnswer();
-  await peerConnection.setLocalDescription(answer);
+  await peerConnection.setLocalDescription(new RTCSessionDescription(answer));
 
   // добавляем ответ в nextarea answer-sdp
   document.getElementById("answer-sdp").value = JSON.stringify(answer);
@@ -212,7 +213,7 @@ let addAnswer = async () => {
   answer = JSON.parse(answer);
 
   if (!peerConnection.currentRemoteDescription) {
-    peerConnection.setRemoteDescription(answer);
+    peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
   }
 };
 
