@@ -15,11 +15,9 @@ let servers = {
     },
     {
       urls: "stun:stun1.l.google.com:19302",
-      сервер,
     },
     {
       urls: "stun:stun2.l.google.com:19302",
-      сервер,
     },
   ],
   iceCandidatePoolSize: 10,
