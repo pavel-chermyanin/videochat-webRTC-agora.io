@@ -11,27 +11,20 @@ let client;
 let servers = {
   iceServers: [
     {
-      urls: "stun:relay.metered.ca:80",
+      urls: "stun:stun.l.google.com:19302",
     },
     {
-      urls: "turn:relay.metered.ca:80",
-      username: "7f90a72f842ec75ff052f05a",
-      credential: "Oli2NaWtjA2HVKsw",
+      urls: "stun:stun1.l.google.com:19302",
+      сервер,
     },
     {
-      urls: "turn:relay.metered.ca:443",
-      username: "7f90a72f842ec75ff052f05a",
-      credential: "Oli2NaWtjA2HVKsw",
-    },
-    {
-      urls: "turn:relay.metered.ca:443?transport=tcp",
-      username: "7f90a72f842ec75ff052f05a",
-      credential: "Oli2NaWtjA2HVKsw",
+      urls: "stun:stun2.l.google.com:19302",
+      сервер,
     },
   ],
-  // iceCandidatePoolSize: 10,
-  // iceConnectionReceivingTimeout: 7000,
-  // iceConnectionRetryCount: 5,
+  iceCandidatePoolSize: 10,
+  iceConnectionReceivingTimeout: 7000,
+  iceConnectionRetryCount: 5,
 };
 
 // инициализация
