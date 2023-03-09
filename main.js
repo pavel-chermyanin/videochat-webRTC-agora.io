@@ -29,9 +29,9 @@ let servers = {
       credential: "Oli2NaWtjA2HVKsw",
     },
   ],
-  iceCandidatePoolSize: 10,
-  iceConnectionReceivingTimeout: 7000,
-  iceConnectionRetryCount: 5,
+  // iceCandidatePoolSize: 10,
+  // iceConnectionReceivingTimeout: 7000,
+  // iceConnectionRetryCount: 5,
 };
 
 // инициализация
