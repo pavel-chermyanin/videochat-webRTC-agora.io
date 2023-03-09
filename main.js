@@ -8,41 +8,31 @@ let uid = String(Math.floor(Math.random() * 100));
 let token = null;
 let client;
 
-
-
-
-
-  let servers = {
-    iceServers: [
-      {
-        urls: "stun:relay.metered.ca:80",
-      },
-      {
-        urls: "turn:relay.metered.ca:80",
-        username: "7f90a72f842ec75ff052f05a",
-        credential: "Oli2NaWtjA2HVKsw",
-      },
-      {
-        urls: "turn:relay.metered.ca:443",
-        username: "7f90a72f842ec75ff052f05a",
-        credential: "Oli2NaWtjA2HVKsw",
-      },
-      {
-        urls: "turn:relay.metered.ca:443?transport=tcp",
-        username: "7f90a72f842ec75ff052f05a",
-        credential: "Oli2NaWtjA2HVKsw",
-      },
-    ],
-    // iceServers: [
-    //   { urls: "stun:stun.l.google.com:19302" },
-    //   {
-    //     urls: "turn:dj-front.doct24.com:3478",
-    //     username: "99c5e73f64647ecb366442fb",
-    //     credential: "EVtW7idU50NbcLcd",
-    //   },
-    // ],
-    // iceTransportPolicy: "all",
-  };
+let servers = {
+  iceServers: [
+    {
+      urls: "stun:relay.metered.ca:80",
+    },
+    {
+      urls: "turn:relay.metered.ca:80",
+      username: "7f90a72f842ec75ff052f05a",
+      credential: "Oli2NaWtjA2HVKsw",
+    },
+    {
+      urls: "turn:relay.metered.ca:443",
+      username: "7f90a72f842ec75ff052f05a",
+      credential: "Oli2NaWtjA2HVKsw",
+    },
+    {
+      urls: "turn:relay.metered.ca:443?transport=tcp",
+      username: "7f90a72f842ec75ff052f05a",
+      credential: "Oli2NaWtjA2HVKsw",
+    },
+  ],
+  iceCandidatePoolSize: 10,
+  iceConnectionReceivingTimeout: 7000,
+  iceConnectionRetryCount: 5,
+};
 
 // инициализация
 let init = async () => {
@@ -97,6 +87,7 @@ let handleMessageFromPeer = async (message, MemberId) => {
   }
 
   if (message.type === "candidate") {
+    console.log(remoteStream);
     if (peerConnection) {
       peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate));
     }
