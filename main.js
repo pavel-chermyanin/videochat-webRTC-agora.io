@@ -19,6 +19,11 @@ let servers = {
     {
       urls: "stun:stun2.l.google.com:19302",
     },
+    {
+      urls: "turn:dj-front.doct24.com:3478",
+      username: "99c5e73f64647ecb366442fb",
+      credential: "EVtW7idU50NbcLcd",
+    },
   ],
   iceCandidatePoolSize: 10,
   iceConnectionReceivingTimeout: 7000,
@@ -39,6 +44,8 @@ let init = async () => {
   client.on("MessageFromPeer", handleMessageFromPeer);
 
   // получаем видео с камеры
+
+  
   localStream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: false,
@@ -195,7 +202,7 @@ let addAnswer = async () => {
   answer = JSON.parse(answer);
 
   if (!peerConnection.currentRemoteDescription) {
-    peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+    await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
   }
 };
 
