@@ -25,9 +25,7 @@ let servers = {
       credential: "EVtW7idU50NbcLcd",
     },
   ],
-  iceCandidatePoolSize: 10,
-  iceConnectionReceivingTimeout: 7000,
-  iceConnectionRetryCount: 5,
+  iceTransportPolicy:'all',
 };
 
 // инициализация
